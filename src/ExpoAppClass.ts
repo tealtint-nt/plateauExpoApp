@@ -25,7 +25,7 @@ const models = [
   "51357380_frn_6697_op",
 ];
 
-export class ExpoApp {
+export class ExpoAppClass {
   private readonly engine: Engine;
   private readonly scene: Scene;
   private canvasEl: HTMLCanvasElement;
@@ -68,7 +68,6 @@ export class ExpoApp {
       { width: 1800, height: 1800, subdivisions: 32 },
       this.scene,
     );
-    ground.position.y = -21;
 
     const groundMaterial = new StandardMaterial("groundMaterial", this.scene);
     const groundTexture = new Texture(
@@ -85,8 +84,6 @@ export class ExpoApp {
       { width: 1800, height: 1800, subdivisions: 32 },
       this.scene,
     );
-    // 波による上昇分を見込み、水面を低く配置する。
-    waterMesh.position.y = -20;
 
     const water = new WaterMaterial("water", this.scene);
     water.bumpTexture = new Texture(
@@ -94,9 +91,12 @@ export class ExpoApp {
       this.scene,
     );
 
+    ground.position.y = -1;
+    waterMesh.position.y = -0.1;
+
     // water properties
     water.windForce = -15;
-    water.waveHeight = 1.3;
+    water.waveHeight = 0;
     water.windDirection = new Vector2(1, 1);
     water.waterColor = new Color3(0.1, 0.1, 0.6);
     water.colorBlendFactor = 0.3;
