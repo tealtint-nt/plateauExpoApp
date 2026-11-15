@@ -79,3 +79,13 @@ pnpm create vite@latest plateauExpoApp --template react-ts
 
 pnpm add @babylonjs/core @babylonjs/loaders @babylonjs/materials
 ```
+
+- git LFSをインストール
+  `brew install git-lfs`
+
+- ファイル取得
+
+```
+git lfs install
+git lfs pull
+```
