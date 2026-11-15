@@ -1,10 +1,14 @@
 import { useEffect, useRef } from "react";
 import "./App.css";
 import { ExpoApp } from "./ExpoApp";
+import { ExpoAppClass } from "./ExpoAppClass";
 
-function AppSample() {
+const isClassScene =
+  new URLSearchParams(window.location.search).get("scene") === "class";
+
+function App() {
   const canvasContainerRef = useRef<HTMLDivElement>(null);
-  const expoAppRef = useRef<ExpoApp>(null);
+  const expoAppRef = useRef<ExpoAppClass>(null);
 
   useEffect(() => {
     // 描画先の要素が取得できない場合は初期化しない
@@ -17,7 +21,7 @@ function AppSample() {
     canvas.className = "canvas";
     canvasContainerRef.current.appendChild(canvas);
 
-    const expoApp = new ExpoApp(canvas);
+    const expoApp = new ExpoAppClass(canvas);
     expoAppRef.current = expoApp;
 
     return () => {
@@ -26,6 +30,14 @@ function AppSample() {
     };
   }, []);
 
+  if (!isClassScene) {
+    return (
+      <div className="app">
+        <ExpoApp />
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <main className="render-canvas-cont" ref={canvasContainerRef}></main>
@@ -33,4 +45,4 @@ function AppSample() {
   );
 }
 
-export default AppSample;
+export default App;
