@@ -141,7 +141,7 @@ const initialize = (
   observer.observe(canvas);
 
   // plateau読み込み
-  void loadModels(scene);
+  loadModels(scene);
 
   return () => {
     observer.disconnect();
