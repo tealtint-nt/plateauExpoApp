@@ -106,7 +106,7 @@ const initialize = (
   // water
   const waterMesh = MeshBuilder.CreateGround(
     "WaterMesh",
-    { width: 1800, height: 1800, subdivisions: 32 },
+    { width: 1800, height: 1800 },
     scene,
   );
 
